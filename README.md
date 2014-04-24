@@ -6,11 +6,11 @@ You're in the right place if you want to be challenged continuously to engineer 
 
 You are also not afraid of [getting off the Drupal island](http://www.garfieldtech.com/blog/off-the-island-2013) to work on the other technologies that we use - [AngularJS](https://angularjs.org/), [Symfony2](http://symfony.com), [Node.JS](http://nodejs.org/), [Crate](https://crate.io/) and whatever other technologies that makes sense for us. Get ready to grow and expand your horizons.
 
-Excited? Please read on..
+Excited?!! Step right in!
 
 ## What do you need to do?
 
-We have included the [XML data dump](https://github.com/iMoneyTech/drupal-imoney-dcmnl2014/blob/master/imoneymobileplans.xml) of our [iMoney Mobile Plan comparison table](http://www.imoney.my/mobile-plan-comparison). You can build anything you want from that data, but with Drupal 7 + any front end frameworks. Import the content into Drupal 7. Use contrib modules, code custom modules, build calculators / filters, go crazy, save the world and WOW us!
+We have included the [XML data dump](https://github.com/iMoneyTech/drupal-imoney-dcmnl2014/blob/master/imoneymobileplans.xml) of our [iMoney Mobile Plan comparison table](http://www.imoney.my/mobile-plan-comparison). You can build anything you want from that data, but with Drupal 7 + any front end framework(s). Import the content into Drupal 7. Use contrib modules, code custom modules, build calculators / filters, go crazy, save the world and WOW us!
 
 ![mindBlown](http://i2.kym-cdn.com/photos/images/newsfeed/000/357/026/2ff.gif)
 
@@ -33,6 +33,8 @@ We have included the [XML data dump](https://github.com/iMoneyTech/drupal-imoney
 3. Submit a pull request when you're done!
 4. We'll review your code and get back to you.
 
-## What do you get?
+## What will you get?
 
-The most impressive pull request will be awarded a full time position in iMoney! We will fly you here to work alongside our Tech Team in our HQ, Kuala Lumpur, Malaysia + take care of your work permit!
+The most impressive pull request will be awarded a full time position in iMoney! We will fly you here to work alongside our Tech Team in our HQ, Kuala Lumpur, Malaysia + take care of your work permit! We have free coffee, a well stocked *healthy* snack bar, yogurt, cereals, fresh fruits and juices. We will even hire more than 1 person if the results blow us away.
+
+### All the best!
