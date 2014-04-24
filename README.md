@@ -38,3 +38,5 @@ We have included the [XML data dump](https://github.com/iMoneyTech/drupal-imoney
 The most impressive pull request will be awarded a full time position in iMoney! We will fly you here to work alongside our Tech Team in our HQ, Kuala Lumpur, Malaysia + take care of your work permit! We have free coffee, a well stocked *healthy* snack bar, yogurt, cereals, fresh fruits and juices. We will even hire more than 1 person if the results blow us away.
 
 ### All the best!
+
+Oh btw, please email [tech@imoney-group.com](mailto:tech@imoney-group.com) if you have any questions or need any clarification.
