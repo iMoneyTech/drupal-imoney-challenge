@@ -2,7 +2,7 @@
 
 Welcome! You are probably here because you have set your mind to embark on an exciting career with iMoney! We are looking for Senior Drupal Developers who are able to mix and match the different contrib modules, write glue code modules, and build custom modules if no solution is available.
 
-You're in the right place if you want to be challenged continously to engineering creative solutions. You will join us in building beautiful and very usable web applications that empower consumers to make better financial decisions. You will also develop internal platform that improves the efficiency and effectiveness of our Product, Operations, and Sales teams.
+You're in the right place if you want to be challenged continuously to engineer creative solutions. You will join us in building beautiful and very usable web applications that empower consumers to make better financial decisions. You will also develop internal platform that improves the efficiency and effectiveness of our Product, Operations, and Sales teams.
 
 You are also not afraid of [getting off the Drupal island](http://www.garfieldtech.com/blog/off-the-island-2013) to work on the other technologies that we use - [AngularJS](https://angularjs.org/), [Symfony2](http://symfony.com), [Node.JS](http://nodejs.org/), [Crate](https://crate.io/) and whatever other technologies that makes sense for us. Get ready to grow and expand your horizons.
 
@@ -14,7 +14,7 @@ We have included the XML data dump of our [iMoney Mobile Plans](http://www.imone
 
 ![mindBlown](http://i2.kym-cdn.com/photos/images/newsfeed/000/357/026/2ff.gif)
 
-*Saving the world is totally optional ;) And we're not too strict on it looking good, but a very functional application.*
+*Saving the world is totally optional ;) But we're not too strict on it looking good, we care more about user experience and functionality.*
 
 ## What expertise are we looking for?
 
@@ -35,4 +35,4 @@ We have included the XML data dump of our [iMoney Mobile Plans](http://www.imone
 
 ## What do you get?
 
-The most impressive pull request will be awarded a full time position in iMoney! We will fly you here to work alongside our Tech Team in our HQ, Kuala Lumpur, Malaysia and take care of your working permit!
+The most impressive pull request will be awarded a full time position in iMoney! We will fly you here to work alongside our Tech Team in our HQ, Kuala Lumpur, Malaysia + take care of your work permit!
