@@ -28,7 +28,7 @@ We have included the XML data dump of our [iMoney Mobile Plans](http://www.imone
 
 ## How do you do it?
 
-1. [Fork this repository]((https://github.com/iMoneyTech/drupal-imoney-dcmnl2014/fork).
+1. [Fork this repository](https://github.com/iMoneyTech/drupal-imoney-dcmnl2014/fork).
 2. Commit as often as you can, we will track your progress.
 3. Submit a pull request when you're done!
 4. We'll review your code and get back to you.
