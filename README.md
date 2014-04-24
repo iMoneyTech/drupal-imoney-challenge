@@ -10,7 +10,7 @@ Excited? Please read on..
 
 ## What do you need to do?
 
-We have included the XML data dump of our [iMoney Mobile Plans](http://www.imoney.my/mobile-plan-comparison) comparison table. You can build anything you want from that data, but with Drupal 7 + any front end frameworks. Import the content into Drupal 7. Use contrib modules, code custom modules, build calculators / filters, go crazy, save the world and WOW us!
+We have included the [XML data dump](https://github.com/iMoneyTech/drupal-imoney-dcmnl2014/blob/master/imoneymobileplans.xml) of our [iMoney Mobile Plan comparison table](http://www.imoney.my/mobile-plan-comparison). You can build anything you want from that data, but with Drupal 7 + any front end frameworks. Import the content into Drupal 7. Use contrib modules, code custom modules, build calculators / filters, go crazy, save the world and WOW us!
 
 ![mindBlown](http://i2.kym-cdn.com/photos/images/newsfeed/000/357/026/2ff.gif)
 
