@@ -1,4 +1,4 @@
-# iMoney Drupal Camp Manila 2014 Challenge!
+# iMoney & Drupal Challenge!
 
 Welcome! You are probably here because you have set your mind to embark on an exciting career with iMoney! We are looking for Senior Drupal Developers who are able to mix and match the different contrib modules, write glue code modules, and build custom modules if no solution is available.
 
@@ -10,7 +10,7 @@ Excited?!! Step right in!
 
 ## What do you need to do?
 
-We have included the [XML data dump](https://github.com/iMoneyTech/drupal-imoney-dcmnl2014/blob/master/imoneymobileplans.xml) of our [iMoney Mobile Plan comparison table](http://www.imoney.my/mobile-plan-comparison). You can build anything you want from that data, but with Drupal 7 + any front end framework(s). Import the content into Drupal 7. Use contrib modules, code custom modules, build calculators / filters, go crazy, save the world and WOW us!
+We have included the [XML data dump](https://github.com/iMoneyTech/drupal-imoney-challenge/blob/master/imoneymobileplans.xml) of our [iMoney Mobile Plan comparison table](http://www.imoney.my/mobile-plan-comparison). You can build anything you want from that data, but with Drupal 7 + any front end framework(s). Import the content into Drupal 7. Use contrib modules, code custom modules, build calculators / filters, go crazy, save the world and WOW us!
 
 ![mindBlown](http://i2.kym-cdn.com/photos/images/newsfeed/000/357/026/2ff.gif)
 
@@ -28,7 +28,7 @@ We have included the [XML data dump](https://github.com/iMoneyTech/drupal-imoney
 
 ## How do you do it?
 
-1. [Fork this repository](https://github.com/iMoneyTech/drupal-imoney-dcmnl2014/fork).
+1. [Fork this repository](https://github.com/iMoneyTech/drupal-imoney-challenge/fork).
 2. Commit as often as you can, we will track your progress.
 3. Submit a pull request when you're done!
 4. We'll review your code and get back to you.
