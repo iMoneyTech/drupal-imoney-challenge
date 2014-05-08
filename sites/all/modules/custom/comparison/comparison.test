@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Tests for comparison.module.
+ */
+
+/**
+ * Tests the functionality of the Comparison module.
+ */
+class ComparisonTestCase extends DrupalWebTestCase {
+
+
+}

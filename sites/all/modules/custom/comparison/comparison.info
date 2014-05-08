@@ -1,0 +1,8 @@
+name = Comparison
+description = Allows users to compare different mobile plans.
+version = VERSION
+core = 7.x
+files[] = comparison.test
+configure = admin/content/comparison/settings
+stylesheets[all][] = comparison.css
+
