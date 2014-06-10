@@ -1,0 +1,195 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function plans_migrate_install() {
+  if(!($migrate = variable_get('plans_migrate'))){
+    $phone_plans = array();
+    $phone_rates = array();
+    $telcos = array();
+    $phones = array();
+
+    // Convert XML file to an array
+    $xml = simplexml_load_file('imoneymobileplans.xml');
+    $mobile_plans = array_pop(json_decode(json_encode($xml), true));
+
+    // Massage xml data to seperate arrays to be injested
+    foreach($mobile_plans as $item){
+      $nid = $item['nid'];
+      $phone = $item['phone']['mobilePlan'];
+      $telco = $item['telco'] = $phone['telcoName'];
+      unset($item['phone']); // remove phone rates
+
+      // $phone_plans holds the mobile_plan data
+      if(!in_array($nid, array_keys($phone_plans))){
+        $phone_plans[$nid] = $item;
+      }
+
+      // $telcos holds the telco data
+      if(!in_array($phone['telcoName'], array_values($telcos))){
+        $telcos[] = $telco;
+      }
+
+      // $phone_plans holds the mobile_plan data
+      if(!in_array($phone['nid'], array_keys($phones))){
+        $phones[$phone['nid']] = array(
+          'mobileDevice' => $phone['mobileDevice'],
+          'mobileCapacity' => $phone['mobileCapacity'],
+          'mobileImage' => $phone['mobileImage'],
+          'mobileImageAlt' => $phone['mobileImageAlt'],
+          'mobileManufacturer' => $phone['mobileManufacturer'],
+        );
+      }
+
+      // $phone_rates hold the mobile_rates data
+      unset($phone['mobileDevice']);
+      unset($phone['mobileCapacity']);
+      unset($phone['mobileImage']);
+      unset($phone['mobileImageAlt']);
+      unset($phone['mobileManufacturer']);
+      $phone_rates[$nid][$phone['nid']] = $phone;
+    }
+
+    // Iterate $telcos to ingest telco content
+    foreach($telcos as $key => $telco){
+      if($tid = _plans_migrate_import_term($telco, 'telco')){
+        unset($telcos[$key]);
+        $telcos[$telco] = $tid;
+      }
+    }
+
+    // Iterate $telcos to ingest telco content
+    foreach($phones as $key => $phone){
+      if($tid = _plans_migrate_import_term($phone['mobileDevice'] . ' - ' . $phone['mobileCapacity'], 'phone')){
+        //unset($phones[$key]);
+        $phones[$key] = $tid;
+        $fields = array(
+          'field_mobile_device' => $phone['mobileDevice'],
+          'field_mobile_capacity' => $phone['mobileCapacity'],
+          'field_mobile_manufacturer' => $phone['mobileManufacturer'],
+          'field_mobile_image' => $phone['mobileImage'],
+        );
+        _plans_migrate_update_term_fields('taxonomy_term', $tid, $fields);
+      }
+    }
+
+    // Iterate $phone_plans to ingest mobile_plan content
+    foreach($phone_plans as $key => $item){
+      $item['tid'] = $telcos[$item['telco']]; // Extract tid of newly created telco term
+      $nid = _plans_migrate_save_mobile_plan($item, $phone_rates[$key], $phones);
+    }
+
+    variable_set('plans_migrate', FALSE);
+  }
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function plans_migrate_uninstall() {
+  /*
+   *variable_del('upload_file_types');
+   */
+  variable_del('plans_migrate');
+}
+
+/**
+ *  Save Terms
+ *
+ *  @param string $vocab_name
+ *  @param string $term_name
+ */
+function _plans_migrate_import_term($term_name, $vocab_name){
+  // Add new telco term if not current exist
+  if(!($temp = taxonomy_get_term_by_name($term_name, $vocab_name))){
+    // Load vocabulary object to extract vocabular id
+    $vocab = taxonomy_vocabulary_machine_name_load($vocab_name);
+    $data = array(
+      'name' => $term_name,
+      'vid' => $vocab->vid,
+      'parent' => array(0),
+    );
+
+    // Save
+    $term = entity_create('taxonomy_term', $data);
+    $entity = entity_metadata_wrapper('taxonomy_term', $term);
+    $entity->save();
+
+    return $entity->tid->value();
+  }
+
+  return NULL;
+}
+
+/**
+ *  Save Mobile Plan
+ *
+ *  @param array $mobile_plan
+ *  @param array $phone_rates
+ *  @param array $phones
+ *  @return string
+ */
+function _plans_migrate_save_mobile_plan($mobile_plan, $phone_rates, $phones){
+  // Create an Entity
+  $node = entity_create('node', array('type' => 'mobile_plan'));
+  // Specify the author
+  $node->uid = 1;
+  // Create a Entity Wrapper of that new Entity
+  $entity = entity_metadata_wrapper('node', $node);
+
+  // Specify the title
+  $entity->title = $mobile_plan['planName'];
+
+  // Add field data... SO MUCH BETTER!
+  $entity->field_free_call = $mobile_plan['freeCall'];
+  $entity->field_plan_type = $mobile_plan['planType'];
+  //$entity->field_plan_image = $mobile_plan[''];
+  $entity->field_monthly_payment = $mobile_plan['monthlyPayment'];
+  $entity->field_free_sms = $mobile_plan['freeSMS'];
+  $entity->field_free_data = $mobile_plan['freeData'];
+
+  $entity->field_telco = $mobile_plan['tid'];
+
+  $plam_image = file_save_data(file_get_contents($mobile_plan['planImage']), file_default_scheme().'://'.basename($mobile_plan['planImage']));
+  $entity->field_plan_image = (array)$plan_image;
+
+  // Save the node.
+  $entity->save();
+
+  // Add mobile rates to mobile plan
+  foreach($phone_rates as $key => $item){
+    // Create entity using the entity name and set the parent.
+    $field_collection_item = entity_create('field_collection_item', array('field_name' => 'field_phone_plans'));
+    $field_collection_item->setHostEntity('node', $node);
+
+    // Set values to respective field
+    $field_collection_item->field_contract_period[LANGUAGE_NONE][0]['value'] = $item['contractPeriod'];
+    $field_collection_item->field_sell_price[LANGUAGE_NONE][0]['value'] = $item['sellPrice'];
+    $field_collection_item->field_url[LANGUAGE_NONE][0]['value'] = $item['url'];
+    $field_collection_item->field_phone[LANGUAGE_NONE][0]['target_id'] = (int)$phones[$key];
+
+    // Save the entity.
+    $field_collection_item->save();
+  }
+
+  return $entity->nid->value();
+}
+
+function _plans_migrate_update_term_fields($entity_type, $entity_id, $fields){
+  $entity = reset(entity_load('taxonomy_term', array($entity_id)));
+  $entity_wrapper = entity_metadata_wrapper($entity_type, $entity);
+  foreach($fields as $key => $field) {
+    if(stripos($key, '_image') !== FALSE){
+      $field = str_replace('www.', 'v2direct.', $field); // Alter the url as apparently image using another subdomain
+      $img = explode('?', $field); // Remove all trailing parameters
+      $file = file_save_data(file_get_contents($img[0]), file_default_scheme().'://'.basename($img[0]));
+      $entity_wrapper->{$key} = (array)$file;
+    }
+    else {
+      $entity_wrapper->{$key} = $field;
+    }
+  }
+  $entity_wrapper->save();
+}

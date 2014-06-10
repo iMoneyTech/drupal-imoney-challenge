@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function plans_migrate_init() {
+  /*
+   *drupal_add_css(drupal_get_path('module', 'book') . '/book.css');
+   */
+    $phone_plans = array();
+    $phone_rates = array();
+    $telcos = array();
+    $phones = array();
+
+    // Convert XML file to an array
+    $xml = simplexml_load_file('imoneymobileplans.xml');
+    $mobile_plans = array_pop(json_decode(json_encode($xml), true));
+
+    // Massage xml data to seperate arrays to be injested
+    foreach($mobile_plans as $item){
+      $nid = $item['nid'];
+      $phone = $item['phone']['mobilePlan'];
+      $telco = $item['telco'] = $phone['telcoName'];
+      unset($item['phone']); // remove phone rates
+
+      // $phone_plans holds the mobile_plan data
+      if(!in_array($nid, array_keys($phone_plans))){
+        $phone_plans[$nid] = $item;
+      }
+
+      // $telcos holds the telco data
+      if(!in_array($phone['telcoName'], array_values($telcos))){
+        $telcos[] = $telco;
+      }
+
+      // $phone_plans holds the mobile_plan data
+      if(!in_array($phone['mobileDevice'].$phone['mobileCapacity'], array_keys($phones))){
+        $phones[$phone['nid']] = array(
+          'mobileDevice' => $phone['mobileDevice'],
+          'mobileCapacity' => $phone['mobileCapacity'],
+          'mobileImage' => $phone['mobileImage'],
+          'mobileImageAlt' => $phone['mobileImageAlt'],
+          'mobileManufacturer' => $phone['mobileManufacturer'],
+        );
+      }
+
+      // $phone_rates hold the mobile_rates data
+      unset($phone['mobileDevice']);
+      unset($phone['mobileCapacity']);
+      unset($phone['mobileImage']);
+      unset($phone['mobileImageAlt']);
+      unset($phone['mobileManufacturer']);
+      $phone_rates[$nid][$phone['nid']] = $phone;
+    }
+  //print_r($phone_rates);
+  $node = node_load(1);
+  $entity = entity_metadata_wrapper('node', $node);
+  $fc = field_collection_item_load(1);
+  /*$fc_wrapper = entity_metadata_wrapper('field_collection_item', $fc);
+  $fc_wrapper->field_contract_period;
+  $fc_wrapper->field_sell_price->set($item['sellPrice']);
+  $fc_wrapper->field_url->set($item['url']);
+  $fc_wrapper->field_phone->set($phones[$key]);*/
+  //print_r($fc);
+}
+
