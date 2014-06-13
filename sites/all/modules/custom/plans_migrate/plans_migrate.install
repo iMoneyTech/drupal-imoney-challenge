@@ -152,8 +152,8 @@ function _plans_migrate_save_mobile_plan($mobile_plan, $phone_rates, $phones){
 
   $entity->field_telco = $mobile_plan['tid'];
 
-  $plam_image = file_save_data(file_get_contents($mobile_plan['planImage']), file_default_scheme().'://'.basename($mobile_plan['planImage']));
-  $entity->field_plan_image = (array)$plan_image;
+  //$plan_image = file_save_data(file_get_contents($mobile_plan['planImage']), file_default_scheme().'://'.basename($mobile_plan['planImage']));
+  //$entity->field_plan_image = (array)$plan_image;
 
   // Save the node.
   $entity->save();

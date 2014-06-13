@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Mobile Plan API feature.
+ */
+
+include_once 'mobile_plan_api.features.inc';
