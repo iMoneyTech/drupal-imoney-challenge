@@ -1,0 +1,17 @@
+<div class="jumbotron">
+  <h1>{{header}}</h1>
+  <div class="text-center" ng-if="telcos.length == 0">No items found!</div>
+</div>
+<p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
+<ul class="list-group phone media-list" ng-hide="loading" ng-repeat="telco in telcos">
+  <li class="list-group-item media">
+    <!--<a class="pull-left" href="#">
+      <img class="media-object" src="{{ telco.node.image }}" />
+    </a>-->
+    <div class="media-body">
+      <h3 class="media-heading"><a href="#plans/{{telco.node.tid}}/{{telco.node.name}}">{{ telco.node.name }}</a></h3>
+      <!--<label>Manufacturer : </label> {{ phone.node.manufacturer }}<br />
+      <label>Capacity : </label> {{ phone.node.capacity }}<br />-->
+    </div>
+  </li>
+</ul>

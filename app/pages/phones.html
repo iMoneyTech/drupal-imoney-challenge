@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <h1>{{header}}</h1>
+  <div class="text-center" ng-if="phones.length == 0">No items found!</div>
+</div>
+<p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
+<ul class="list-group phone media-list" ng-hide="loading" ng-repeat="phone in phones">
+  <li class="list-group-item media">
+    <a class="pull-left" href="#">
+      <img class="media-object" ng-if="phone.node.image" src="{{ phone.node.image }}" />
+    </a>
+    <div class="media-body">
+      <h3 class="media-heading">{{ phone.node.device_name }}</h3>
+      <label>Manufacturer : </label> {{ phone.node.manufacturer }}<br />
+      <label>Capacity : </label> {{ phone.node.capacity }}<br />
+      <label>Contract Period : </label> {{ phone.node.contract_period }}<br />
+      <label>Sell Price : </label> {{ phone.node.sell_price }}<br />
+    </div>
+  </li>
+</ul>
+
+

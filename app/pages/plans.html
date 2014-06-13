@@ -1,0 +1,19 @@
+<div class="jumbotron">
+  <h1>{{header}}</h1>
+  <div class="text-center" ng-if="plans.length == 0">No items found!</div>
+</div>
+<p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
+<ul class="list-group phone media-list" ng-hide="loading" ng-repeat="plan in plans">
+  <li class="list-group-item media">
+    <!--<a class="pull-left" href="#">
+      <img class="media-object" src="{{ telco.node.image }}" />
+    </a>-->
+    <div class="media-body">
+      <h3 class="media-heading"><a href="#phones/{{plan.node.nid}}/{{plan.node.title}}">{{ plan.node.title }}</a></h3>
+      <label>Type : </label> {{ plan.node.type }}<br />
+      <label>Free Call : </label> {{ plan.node.free_call }}<br />
+      <label>Free Data : </label> {{ plan.node.free_data }}<br />
+      <label>Free SMS : </label> {{ plan.node.free_sms }}<br />
+    </div>
+  </li>
+</ul>
