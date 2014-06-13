@@ -1,0 +1,52 @@
+<div class="jumbotron">
+  <form class="form-horizontal" role="form" >
+    <div class="form-group">
+      <label>Telco</label>
+      <select name="telco" class="form-control" ng-model="filterForm.telco">
+        <option value="0">-All-</option>
+        <option value="1">Maxis</option>
+        <option value="2">Celcom</option>
+        <option value="3">Digi</option>
+        <option value="4">U Mobile</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <select name="phone" class="form-control" ng-model="filterForm.phone">
+        <option value="0">-All-</option>
+        <option value="11">HTC One - 32</option>
+        <option value="8">iPhone 5c - 16</option>
+        <option value="13">iPhone 5c - 32</option>
+        <option value="5">iPhone 5s - 16</option>
+        <option value="6">iPhone 5s - 32</option>
+        <option value="7">iPhone 5s - 64</option>
+        <option value="9">Samsung Galaxy Note 3 - 32</option>
+        <option value="10">Samsung Galaxy S4 - 16</option>
+        <option value="12">Samsung Galaxy S5 - 16</option>
+        <option value="15">Sony Xperia Z - 16</option>
+        <option value="14">Sony Xperia Z Ultra - 16</option>
+      </select>
+
+        <button type="submit" class="btn btn-default" ng-click="filterForm.submitForm()">Search</button>
+
+    </div>
+  </form>
+  <div class="text-center" ng-if="results.length == 0">No items found!</div>
+</div>
+<p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
+<ul class="list-group phone media-list" ng-hide="loading" ng-repeat="result in results">
+  <li class="list-group-item media">
+    <a class="pull-left" href="#">
+      <img class="media-object" ng-if="result.node.image" src="{{ result.node.image }}" />
+    </a>
+    <div class="media-body">
+      <h3 class="media-heading">{{ result.node.title }}</h3>
+      <label>Telco : </label> <a href="#plans/{{ result.node.telco_id }}/{{ result.node.telco }}">{{ result.node.telco }}</a><br />
+      <label>Device Name : </label> {{ result.node.device_name }} <br />
+      <label>Manufacturer : </label> {{ result.node.manufacturer }}<br />
+      <label>Capacity : </label> {{ result.node.capacity }}<br />
+      <label>Contract Period : </label> {{ result.node.contract_period }}<br />
+      <label>Sell Price : </label> {{ result.node.sell_price }}<br />
+    </div>
+  </li>
+</ul>

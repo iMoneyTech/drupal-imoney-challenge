@@ -1,0 +1,9 @@
+name = Mobile Plan Migrate
+description = Migrate mobile plans from xml file
+core = 7.x
+package = iMoney
+version = 7.x-1.0
+project = plans_migrate
+dependencies[] = entity
+dependencies[] = mobile_plan
+

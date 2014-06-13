@@ -1,0 +1,42 @@
+<html ng-app="iMoneyApp">
+  <head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body ng-controller="mainController">
+
+    <!-- HEADER AND NAVBAR -->
+    <header>
+      <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Mobile Plan Comparison</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="#telcos"><i class="fa fa-signal"></i> Telcos</a></li>
+          <!--<li><a href="#phones"><i class="fa fa-mobile"></i> Phones</a></li>-->
+          <li><a href="#plans"><i class="fa fa-mobile"></i> Mobile Plans</a></li>
+        </ul>
+      </div>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT AND INJECTED VIEWS -->
+    <div id="main" class="container">
+      <!-- angular templating -->
+      <!-- this is where content will be injected -->
+      <div ng-view></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="text-center">
+      Crafted by <a href="https://github.com/alexgkt"><i class="fa fa-github"></i> Alex Goh</a>
+    </footer>
+
+  </body>
+  </html>
