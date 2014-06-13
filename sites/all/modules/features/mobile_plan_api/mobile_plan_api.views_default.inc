@@ -260,6 +260,17 @@ function mobile_plan_api_views_default_views() {
   $handler->display->display_options['fields']['field_telco']['settings'] = array(
     'link' => 0,
   );
+  /* Field: Content: Telco */
+  $handler->display->display_options['fields']['field_telco_1']['id'] = 'field_telco_1';
+  $handler->display->display_options['fields']['field_telco_1']['table'] = 'field_data_field_telco';
+  $handler->display->display_options['fields']['field_telco_1']['field'] = 'field_telco';
+  $handler->display->display_options['fields']['field_telco_1']['relationship'] = 'field_phone_plans_node';
+  $handler->display->display_options['fields']['field_telco_1']['label'] = 'telco_id';
+  $handler->display->display_options['fields']['field_telco_1']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_telco_1']['type'] = 'entityreference_entity_id';
+  $handler->display->display_options['fields']['field_telco_1']['settings'] = array(
+    'link' => 0,
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -275,6 +286,11 @@ function mobile_plan_api_views_default_views() {
   $handler->display->display_options['sorts']['tid']['field'] = 'tid';
   $handler->display->display_options['sorts']['tid']['relationship'] = 'field_phone_target_id';
   $handler->display->display_options['sorts']['tid']['expose']['label'] = 'Term ID';
+  /* Sort criterion: Content: Telco (field_telco) */
+  $handler->display->display_options['sorts']['field_telco_target_id']['id'] = 'field_telco_target_id';
+  $handler->display->display_options['sorts']['field_telco_target_id']['table'] = 'field_data_field_telco';
+  $handler->display->display_options['sorts']['field_telco_target_id']['field'] = 'field_telco_target_id';
+  $handler->display->display_options['sorts']['field_telco_target_id']['relationship'] = 'field_phone_plans_node';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
