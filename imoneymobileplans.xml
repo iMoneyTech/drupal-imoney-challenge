@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<root>
+
    <mobilePlan>
       <freeCall>0 SMS</freeCall>
       <freeData>2.00</freeData>
@@ -4784,4 +4784,3 @@
       <planName>UMobile Ultimate Device 158</planName>
       <planType>Postpaid</planType>
    </mobilePlan>
-</root>
